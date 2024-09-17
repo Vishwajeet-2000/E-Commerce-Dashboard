@@ -59,5 +59,19 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+}
+.foot_content p, .foot_content h3 {
+  margin: 0px;
+}
+
+/* SignUp Form */
+.signup_form form {
+  width: 100%;
+  max-width: 40%;
+  margin: 0 auto;
+}
+
+.signup_form input.form-control {
+  border: 1px solid black;
 }
