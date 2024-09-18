@@ -22,8 +22,14 @@ function NavBar() {
           <Nav className="me-auto">
             <Link to="/">Products</Link>
             <Link to="/add">Add Product</Link>
-            <Link to="/update">Update</Link>
-            { auth ? <Link onClick={logout} to="/signup">Log out</Link> : <Link to="/signup">Sign up</Link> }
+            <Link to="/update">Update</Link> 
+            { 
+            auth ? <Link onClick={logout} to="/signup">Log out</Link> : 
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Sign up</Link> 
+            </> 
+            }
           </Nav>
           </Container>
       </Navbar>
