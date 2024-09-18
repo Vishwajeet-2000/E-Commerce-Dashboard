@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { useNavigate} from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -10,23 +10,27 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const collectData = async () => {
+  useEffect( ()=>{
+    const auth = localStorage.getItem('user')
+    if(auth){
+      navigate('/')
+    }
+  })
+
+  const collectData = async ()=> {
     console.log(name, email, password);
 
-    let result = await fetch('http://localhost:5000/register', {
-      method: 'POST',
-      body: JSON.stringify({ name, email, password }),
-      headers: {
+      let result = await fetch('http://localhost:5000/register', {
+      method : 'post',
+      body : JSON.stringify({ name, email, password }),
+      headers : {
         'Content-Type': 'application/json'
       }
     });
     result = await result.json();
     console.log(result)
-
-    if (result) {
-      localStorage.setItem("user", JSON.stringify(result));
-      navigate('/')
-    }
+    localStorage.setItem("user", JSON.stringify(result));
+    navigate('/')
   }
 
   return (

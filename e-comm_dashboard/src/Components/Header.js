@@ -1,11 +1,19 @@
 import React from 'react'
-import Container from 'react-bootstrap/esm/Container';
-
+import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 function NavBar() {
+
+  const auth = localStorage.getItem('user')
+  const navigate = useNavigate()
+
+  const logout = ()=>{
+    localStorage.clear();
+    navigate('/signup')
+  }
+
   return (
     <>
       <Navbar className="my_nav" bg="primary" data-bs-theme="dark">
@@ -15,8 +23,7 @@ function NavBar() {
             <Link to="/">Products</Link>
             <Link to="/add">Add Product</Link>
             <Link to="/update">Update</Link>
-            <Link to="/signup">Sign up</Link>
-            <Link to="/logout">Log out</Link>
+            { auth ? <Link onClick={logout} to="/signup">Log out</Link> : <Link to="/signup">Sign up</Link> }
           </Nav>
           </Container>
       </Navbar>
