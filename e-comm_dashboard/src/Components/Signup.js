@@ -1,23 +1,38 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function Signup() {
+const Signup = () => {
 
-  const [name, setName] = useState();
-  const [password, setPassword] = useState();
-  const [email, setEmail] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  function collectData(){
+  const collectData = async () => {
+    console.log(name, email, password);
 
+    let result = await fetch('http://localhost:5000/register', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    result = await result.json();
+    console.log(result)
+
+    if (result) {
+      localStorage.setItem("user", JSON.stringify(result));
+      navigate('/')
+    }
   }
 
   return (
     <div className='signup_form'>
-      
       <Form>
-      <h1 className='mt-5'>Sign up Page</h1>
+        <h1 className='mt-5'>Sign up Page</h1>
         <Form.Group className="mb-3 mt-4">
           <Form.Label>Name</Form.Label>
           <Form.Control type="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter name" />
@@ -31,11 +46,20 @@ function Signup() {
 
         <Form.Group className="mb-4">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+          <Form.Control type="password" autoComplete="on" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
         </Form.Group>
 
-        <Button variant="primary" onClick={collectData} type="submit">Sign Up</Button>
+        <Button variant="primary" onClick={collectData} type="button">Sign Up</Button>
       </Form>
+
+      {/* <form>
+      <input type='text' value={name} onChange={(e)=>setName(e.target.value)} /> <br /> <br />
+      <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} /> <br /> <br />
+      <input type='password' value={password} autoComplete="on" onChange={(e)=>setPassword(e.target.value)} /> <br /> <br />
+
+      <button onClick={collectData} type='button'>Sign up</button> 
+      </form> */}
+
     </div>
   )
 }
