@@ -66,12 +66,20 @@
 }
 
 /* SignUp Form */
-.signup_form form {
+.signup_form form, .login_form form, .add_product form {
   width: 100%;
   max-width: 40%;
   margin: 0 auto;
 }
 
-.signup_form input.form-control {
+.signup_form input.form-control, .login_form input.form-control, .add_product input.form-control {
   border: 1px solid black;
+}
+
+.add_product .text-muted{
+  color:red !important;
+}
+.my_nav .userIcon {
+  padding: 0 5px 0 5px;
+  width: 12px;
 }

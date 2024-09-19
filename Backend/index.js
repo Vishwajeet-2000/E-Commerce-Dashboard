@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors")
 const User = require("./db/User")
+const Product = require("./db/Product")
 const app = express();
  require('./db/config')
 
@@ -17,21 +18,28 @@ const app = express();
     //  resp.send("API in progress")
  });
 
-
  app.post("/login", async (req, resp)=> {
-    if(req.body.email && req.body.password){
-      let user = await User.findOne(req.body).select("-password")
-      if(user){
-        resp.send(user)
-      }else{
-        resp.send({result : 'No user found'})
-      }
+  if(req.body.email && req.body.password){
+    let user = await User.findOne(req.body).select("-password")
+    if(user){
+      resp.send(user)
     }else{
       resp.send({result : 'No user found'})
     }
- })
+  }else{
+    resp.send({result : 'No user found'})
+  }
+})
 
- app.listen(5000);
+
+app.post("/add-product", async (req, resp)=>{
+  let product = new Product(req.body);
+  let result = await product.save();
+  resp.send(result)
+})
+
+
+app.listen(5000);
 
 
 

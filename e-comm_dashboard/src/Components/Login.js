@@ -39,11 +39,9 @@ const Login = () => {
   }
 
   return (
-    <div className='signup_form'>
+    <div className='login_form'>
       <Form>
         <h1 className='mt-5'>Login Page</h1>
-        
-
         <Form.Group className="mb-3">
           <Form.Label>Email </Form.Label>
           <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
