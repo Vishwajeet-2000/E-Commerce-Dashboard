@@ -73,8 +73,21 @@ app.put("/product/:id", async (req, resp)=>{
     resp.send(result)
 });
 
-app.listen(5000);
 
+// API to Search product
+app.put("/search/:key", async (req, resp)=>{
+  let result = await Product.find({
+    "$or":[
+      {name: {$regex:req.params.key}},
+      {price: {$regex:req.params.key}},
+      {comapny: {$regex:req.params.key}},
+      {category: {$regex:req.params.key}}
+    ]
+  })
+    resp.send(result)
+});
+
+app.listen(5000);
 
 
 
