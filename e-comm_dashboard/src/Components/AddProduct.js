@@ -54,13 +54,13 @@ const addProduct = async()=>{
         <Form.Group className="mb-3 mt-4">
           <Form.Label>Category</Form.Label>
           <Form.Control type="text" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Enter product category" />
-          { error && !category &&<Form.Text className="text-muted">*Please enter a valid price</Form.Text>}
+          { error && !category &&<Form.Text className="text-muted">*Please enter a valid category</Form.Text>}
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Company </Form.Label>
           <Form.Control type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Enter product company" />
-          { error && !company &&<Form.Text className="text-muted">*Please enter a valid price</Form.Text>}
+          { error && !company &&<Form.Text className="text-muted">*Please enter a valid company</Form.Text>}
         </Form.Group>
 
         <Button variant="primary" onClick={addProduct} type="button">Add Product</Button>

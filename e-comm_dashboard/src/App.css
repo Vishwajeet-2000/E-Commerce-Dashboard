@@ -83,3 +83,13 @@
   padding: 0 5px 0 5px;
   width: 12px;
 }
+
+.product_list h1{
+  margin: 30px 0px;
+  text-align: center;
+}
+.product_list .table{
+  width: 100%;
+  max-width: 70%;
+  margin: 0 auto;
+}

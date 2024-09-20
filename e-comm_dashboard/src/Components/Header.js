@@ -3,8 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Link, useNavigate} from 'react-router-dom'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUser} from '@fortawesome/free-solid-svg-icons'
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+// import {faUser} from '@fortawesome/free-solid-svg-icons'
+/* <FontAwesomeIcon className='userIcon' icon={faUser} style={{color: "#ffffff"}} /> */
 
 function NavBar() {
 
@@ -23,12 +24,10 @@ function NavBar() {
           <Navbar.Brand to="/">E-Commerce</Navbar.Brand>
           <Nav className="me-auto">
             <Link to="/">Products</Link>
-            
-            <FontAwesomeIcon  />
             <Link to="/add">Add Product</Link>
             <Link to="/update">Update</Link> 
             { 
-            auth ? <Link onClick={logout} to="/signup">Log out (<FontAwesomeIcon className='userIcon' icon={faUser} style={{color: "#ffffff"}} />{JSON.parse(auth).name} )</Link> : 
+            auth ? <Link onClick={logout} to="/signup">Log out ({JSON.parse(auth).name} )</Link> : 
             <>
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign up</Link> 
