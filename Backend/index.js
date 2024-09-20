@@ -29,15 +29,28 @@ const app = express();
   }else{
     resp.send({result : 'No user found'})
   }
-})
+});
 
 
 app.post("/add-product", async (req, resp)=>{
   let product = new Product(req.body);
   let result = await product.save();
   resp.send(result)
-})
+});
 
+
+app.get("/products", async (req, resp)=>{
+  let products = await Product.find();
+  if(products.length > 0){
+    resp.send(products)
+  }
+});
+
+
+app.delete("/product/:id", async(req, resp)=>{
+  const result = await Product.deleteOne({_id:req.params.id})
+  resp.send(result)
+});
 
 app.listen(5000);
 
