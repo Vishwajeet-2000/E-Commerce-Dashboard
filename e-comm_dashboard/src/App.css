@@ -66,13 +66,13 @@
 }
 
 /* SignUp Form */
-.signup_form form, .login_form form, .add_product form {
+.signup_form form, .login_form form, .add_product form, .update_product form {
   width: 100%;
   max-width: 40%;
   margin: 0 auto;
 }
 
-.signup_form input.form-control, .login_form input.form-control, .add_product input.form-control {
+.signup_form input.form-control, .login_form input.form-control, .add_product input.form-control, .update_product input.form-control {
   border: 1px solid black;
 }
 

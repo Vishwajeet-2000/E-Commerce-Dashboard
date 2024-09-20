@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 
 function AddProduct() {
 
@@ -26,7 +27,7 @@ const addProduct = async()=>{
     method : 'post',
     body : JSON.stringify({ name, price, category, company, userId }),
     headers : {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json'      
     }
   });
     result = await result.json();
@@ -35,10 +36,15 @@ const addProduct = async()=>{
     // navigate('/')
 }
 
+const alertBar = ()=>{
+
+}
+
   return (
     <div className='add_product'>
       <Form>
         <h1 className='mt-5'>Add Product</h1>
+        { !error ? <Alert variant="success"><Alert.Heading>Product added succesfully</Alert.Heading></Alert> : ""}
         <Form.Group className="mb-3 mt-4">
           <Form.Label>Name</Form.Label>
           <Form.Control type="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter product name" />
