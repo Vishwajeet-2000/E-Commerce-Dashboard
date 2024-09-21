@@ -27,7 +27,7 @@ function NavBar() {
             <Link to="/add">Add Product</Link>
             <Link to="/update">Update</Link> 
             { 
-            auth ? <Link onClick={logout} to="/signup">Log out ({JSON.parse(auth).name} )</Link> : 
+            auth ? <Link onClick={logout} to="/signup">Log out ({JSON.parse(auth).name})</Link> : 
             <>
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign up</Link> 

@@ -66,13 +66,17 @@
 }
 
 /* SignUp Form */
-.signup_form form, .login_form form, .add_product form, .update_product form {
+.signup_form form, .login_form form, .add_product form, .update_product form, .product_list .searchBar {
   width: 100%;
   max-width: 40%;
   margin: 0 auto;
 }
 
-.signup_form input.form-control, .login_form input.form-control, .add_product input.form-control, .update_product input.form-control {
+.signup_form input.form-control, 
+.login_form input.form-control, 
+.add_product input.form-control, 
+.update_product input.form-control,
+.product_list .searchBar input.form-control {
   border: 1px solid black;
 }
 
@@ -88,8 +92,28 @@
   margin: 30px 0px;
   text-align: center;
 }
-.product_list .table{
+
+.product_list .table_box{
+  height: 300px;
   width: 100%;
   max-width: 70%;
+  overflow-y: scroll;
   margin: 0 auto;
+}
+.product_list .table_box thead{
+  position: sticky;
+  top: 0px;
+  outline: 1px solid rgb(169, 169, 169);
+  border-radius: 5px;
+}
+.product_list .table_box thead tr th{
+  background-color: #16a085 !important;
+  color: #fff;
+}
+.product_list .table_box thead tr:nth-last-child(){
+  text-align: center;
+}
+
+.product_list .table_box .updateBtn, .product_list .table_box .deleteBtn, .product_list .table_box [colspan]{
+  text-align: center;
 }
