@@ -45,37 +45,37 @@ function AddProduct() {
 
 
   return (
-    <div className='add_product'>
-      <Form>
-        {success ? <h1 className='mt-5'>Add Product</h1> : <Alert className='mt-5' variant="success"><Alert.Heading>Product added succesfully</Alert.Heading></Alert>}
-        <Form.Group className="mb-2 mt-4">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter product name" />
-          {error && !name && <Form.Text className="text-muted">*Please enter a valid product name</Form.Text>}
-        </Form.Group>
+  <div className='add_product'>
+    <Form>
+      {success ? <h1 className='mt-5'>Add Product</h1> : <Alert className='mt-5' variant="success"><Alert.Heading>Product added succesfully</Alert.Heading></Alert>}
+      <Form.Group className="mb-2 mt-4">
+        <Form.Label>Name</Form.Label>
+        <Form.Control type="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter product name" />
+        {error && !name && <Form.Text className="text-muted">*Please enter a valid product name</Form.Text>}
+      </Form.Group>
 
-        <Form.Group className="mb-2 mt-4">
-          <Form.Label>Price</Form.Label>
-          <Form.Control type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Enter product price" />
-          {error && !price && <Form.Text className="text-muted">*Please enter a valid price</Form.Text>}
-        </Form.Group>
+      <Form.Group className="mb-2 mt-4">
+        <Form.Label>Price</Form.Label>
+        <Form.Control type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Enter product price" />
+        {error && !price && <Form.Text className="text-muted">*Please enter a valid price</Form.Text>}
+      </Form.Group>
 
-        <Form.Group className="mb-2 mt-4">
-          <Form.Label>Category</Form.Label>
-          <Form.Control type="text" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Enter product category" />
-          {error && !category && <Form.Text className="text-muted">*Please enter a valid category</Form.Text>}
-        </Form.Group>
+      <Form.Group className="mb-2 mt-4">
+        <Form.Label>Category</Form.Label>
+        <Form.Control type="text" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Enter product category" />
+        {error && !category && <Form.Text className="text-muted">*Please enter a valid category</Form.Text>}
+      </Form.Group>
 
-        <Form.Group className="mb-4 mt-4">
-          <Form.Label>Company </Form.Label>
-          <Form.Control type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Enter product company" />
-          {error && !company && <Form.Text className="text-muted">*Please enter a valid company</Form.Text>}
-        </Form.Group>
+      <Form.Group className="mb-4 mt-4">
+        <Form.Label>Company </Form.Label>
+        <Form.Control type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Enter product company" />
+        {error && !company && <Form.Text className="text-muted">*Please enter a valid company</Form.Text>}
+      </Form.Group>
 
-        <Button variant="primary" onClick={() => { addProduct(); setSuccess(!success) }} type="button">Add Product</Button>
-      </Form>
-    </div>
-  )
+      <Button variant="primary" onClick={() => { addProduct(); setSuccess(!success) }} type="button">Add Product</Button>
+    </Form>
+  </div>
+   )
 }
 
 export default AddProduct

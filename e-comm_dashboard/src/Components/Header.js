@@ -3,9 +3,6 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Link, useNavigate} from 'react-router-dom'
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-// import {faUser} from '@fortawesome/free-solid-svg-icons'
-/* <FontAwesomeIcon className='userIcon' icon={faUser} style={{color: "#ffffff"}} /> */
 
 function NavBar() {
 

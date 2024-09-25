@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -10,32 +10,32 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  useEffect( ()=>{
+  useEffect(() => {
     const auth = localStorage.getItem('user')
-    if(auth){
+    if (auth) {
       navigate('/')
     }
   })
 
-  const handleLogin = async ()=> {
+  const handleLogin = async () => {
     console.log(email, password);
 
-      let result = await fetch('http://localhost:5000/login', {
-      method : 'post',
-      body : JSON.stringify({email, password }),
-      headers : {
+    let result = await fetch('http://localhost:5000/login', {
+      method: 'post',
+      body: JSON.stringify({ email, password }),
+      headers: {
         'Content-Type': 'application/json'
       }
     });
     result = await result.json();
     console.log(result)
-    if(result.name){
-        localStorage.setItem("user", JSON.stringify(result));
-        navigate('/')
-    }else{
-        alert("Please enter correct details")
+    if (result.name) {
+      localStorage.setItem("user", JSON.stringify(result));
+      navigate('/')
+    } else {
+      alert("Please enter correct details")
     }
-    
+
   }
 
   return (
@@ -55,15 +55,6 @@ const Login = () => {
 
         <Button variant="primary" onClick={handleLogin} type="button">Sign Up</Button>
       </Form>
-
-      {/* <form>
-      <input type='text' value={name} onChange={(e)=>setName(e.target.value)} /> <br /> <br />
-      <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} /> <br /> <br />
-      <input type='password' value={password} autoComplete="on" onChange={(e)=>setPassword(e.target.value)} /> <br /> <br />
-
-      <button onClick={handleLogin} type='button'>Sign up</button> 
-      </form> */}
-
     </div>
   )
 }

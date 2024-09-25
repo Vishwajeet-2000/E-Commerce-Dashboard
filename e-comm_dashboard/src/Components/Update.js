@@ -14,36 +14,34 @@ function Update() {
   const params = useParams()
   const navigate = useNavigate()
 
-  useEffect( ()=>{
+  useEffect(() => {
     getProductDetails();
-  },[])
+  }, [])
 
-  const getProductDetails = async()=>{
+  const getProductDetails = async () => {
     console.log(params);
     let result = await fetch(`http://localhost:5000/product/${params.id}`);
     result = await result.json();
- 
+
     setName(result.name);
     setPrice(result.price);
     setCategory(result.category);
     setCompany(result.company)
   }
 
-  const updateProduct = async()=>{
-
+  const updateProduct = async () => {
     console.log(name, price, category, company);
-    
     let result = await fetch(`http://localhost:5000/product/${params.id}`,
       {
-        method : 'Put',
-        body : JSON.stringify({name, price, category, company}),
-        headers : {
-          'Content-Type':'application/json'
+        method: 'Put',
+        body: JSON.stringify({ name, price, category, company }),
+        headers: {
+          'Content-Type': 'application/json'
         }
       });
-      result = await result.json()
-      console.log(result);
-      navigate('/');
+    result = await result.json()
+    console.log(result);
+    navigate('/');
   }
 
   return (
@@ -70,7 +68,7 @@ function Update() {
           <Form.Control type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Enter product company" />
         </Form.Group>
 
-        <Button variant="success" onClick={()=>{updateProduct()}} type="button">Update Product</Button>
+        <Button variant="success" onClick={() => { updateProduct() }} type="button">Update Product</Button>
       </Form>
     </div>
   )
